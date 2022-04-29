@@ -1,11 +1,18 @@
 package br.com.entra21.encremento;
-
 public class Main {
 
 	public static void main(String[] args) {
 		
 		int idade=33;
 		
+		
+		System.out.println("Minha idade com pos incremento " + (++idade));
+		System.out.println("E agora ?"+idade);
+		
+		
+		
+		
+		/*
 		//aniversario
 		idade = idade+1;  //34
 		System.out.println(idade);
@@ -32,6 +39,14 @@ public class Main {
 		
 		idade-=15;
 		System.out.println(idade);
+		
+		idade=idade-15;
+		System.out.println(idade);
+		
+		*/
+		
+		
+		
 		
 		
 		
