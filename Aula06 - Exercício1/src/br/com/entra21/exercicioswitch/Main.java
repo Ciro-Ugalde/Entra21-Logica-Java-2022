@@ -8,7 +8,8 @@ public class Main {
 		
 		
 		String resposta;
-		Scanner entrada = new Scanner(System.in);		
+		Scanner entrada = new Scanner(System.in);
+		
 		System.out.println("1 = Primavera");
 		System.out.println("2 = Outono");
 		System.out.println("3 = Inverno");
@@ -61,7 +62,6 @@ public class Main {
 		default:
 			System.out.println("Era muito simples!!!");
 		}
-		
 		
 			
 	}

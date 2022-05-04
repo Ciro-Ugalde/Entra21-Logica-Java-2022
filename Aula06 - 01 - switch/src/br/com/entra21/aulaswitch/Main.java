@@ -28,7 +28,7 @@ public class Main {
 		System.out.println("3 = Prova");
 		Scanner entrada = new Scanner(System.in);
 		byte opcao;
-		System.out.println("Escoolha a op 3 se tiver coragem?");
+		System.out.println("Escolha a op 3 se tiver coragem?");
 		System.out.println("Ou escolha qualquer opção");
 		opcao = entrada.nextByte();
 		
