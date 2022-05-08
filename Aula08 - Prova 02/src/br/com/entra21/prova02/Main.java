@@ -9,164 +9,187 @@ public class Main {
 	public static void main(String[] args) {
 	
 		
-		
-		String nome, signo, opcao;
-		int mes;
-		
-		byte dia = 0;
-		
-		Scanner entrada = new Scanner(System.in);
-		
-		System.out.println("Vamos descobrir qual é seu signo!");
-		
-		System.out.println("================================================================");
-		
-	   System.out.println("Seu nome é: ");
-	   nome = entrada.nextLine();
-	   System.out.println("=================================================================");
-	   
-	   System.out.println("Dia do seu aniversário: ");
-	   dia = entrada.nextByte();
-	   System.out.println("==================================================================");
-	   System.out.println("=================================================================");
-	   	   
-	   System.out.println("Mês em que você nasceu: ");
-	   System.out.println("1 - Janeiro // 2 - Fevereiro // 3 - Março // 4 - Abril // 5 - Maio // 6 - Junho // 7 - Julho // 8 - Agosto // 9 - Setembro // 10 - Outubro // 11 - Novembro // 12 - Dezembro");
-	   opcao = entrada.next();
-	   System.out.println("=================================================================");
-	   
-	   
+					
+				startSystem(); //Iniciar a funcao para capturar os dados do usuario. (Conceito de recursividade para implementar loops)
 
-			
-		switch (opcao.toLowerCase()) {
-		
-		case "1":
-		case "janeiro":
-		mes = 1;
-		break;
-		case "2":
-		case "fevereiro":
-		mes = 2;
-		break;
-		case "3":
-		case "marco":
-		mes = 3;
-		break;
-		case "4":
-		case "abril":
-		mes = 4;
-		break;
-		case "5":
-		case "maio":
-		mes = 5;
-		break;
-		case "6":
-		case "junho":
-		mes = 6;
-		break;
-		case "7":
-		case "julho":
-		mes = 7;
-		break;
-		case "8":
-		case "agosto":
-		mes = 8;
-		break;
-		case "9":
-		case "setembro":
-		mes = 9;
-		break;
-		case "10":
-		case "outubro":
-		mes = 10;
-		break;
-		case "11":
-		case "novembro":
-		mes = 11;
-		break;
-		case "12":
-		case "dezembro":
-		mes = 12;
-		break;
-		default:
-				System.out.println("Opção Inexistente!");
-	}
-			
-		
-		
-				
-		
-		if (signo == "error") {
-			System.out.println("Houve algum erro no processo! Tente novamente!");
-			
-		} else {
-			System.out.println("|===============================================================|");
-			System.out.println("-- "+nome.toUpperCase() + " você nasceu no dia "+dia+" do mes "+mes+" seu signo é " + signo+"! --");
-			System.out.println("|===============================================================|");
-		}
-	}
-		
-		
-		
-		
-		public static void verificar(byte mes, byte dia) {
-			
-			final byte diasLimiteMes29 = 29;
-			final byte diasLimiteMes30 = 30;
-			final byte diasLimiteMes31 = 31;
-			
-			if (mes == 2 && dia >diasLimiteMes29) {
-				System.out.println("Por favor, digite uma opção válida FEVEREIRO TEM no máximo 29 dias.");
-			} else if (mes == 4 && dia >diasLimiteMes30) {
-				System.out.println("Por favor, digite uma opção válida ABRIL TEM no máximo 30 dias.");
-			} else if (mes == 6 && dia >diasLimiteMes30) {
-				System.out.println("Por favor, digite uma opção válida JUNHO TEM no máximo 30 dias.");
-			} else if (mes == 9 && dia >diasLimiteMes30) {
-				System.out.println("Por favor, digite uma opção válida SETEMBRO TEM no máximo 30 dias.");
-			} else if (mes == 11 && dia >diasLimiteMes30) {
-				System.out.println("Por favor, digite uma opção válida NOVEMBRO TEM no máximo 30 dias.");
-			} else if (dia >diasLimiteMes31){
-				System.out.println("Por favor, digite uma opção válida. Um mês tem no máximo 31 dias.");
-			} else { 
-				
-				verificar(mes,dia);
 			}
-		}
-		
-		
+			
+			//----------- INICIO SISTEMA  --------------//
+			public static void startSystem() {
+				String nomeCompleto = nomeUsuario(); 	
+				captureDates(nomeCompleto);			
+				}
+			
+			//----------- CAPTURANDO NOME USUARIO --------------//
+			public static String nomeUsuario() {
+				Scanner input = new Scanner(System.in); 												
+				String primeiroNome, ultimoNome; 													
+				
+				System.out.println("Olá, diga seu primeiro nome?"); 									
+				primeiroNome = input.nextLine();														
+				
+				System.out.println("Seu último nome?"); 									
+				ultimoNome = input.nextLine();														
+						
+				String primeiroLetterNome = primeiroNome.substring(0, 1).toUpperCase();					
+				primeiroNome = primeiroLetterNome+primeiroNome.substring(1).toLowerCase(); 				
+				
+				String ultimoLetterNome = ultimoNome.substring(0, 1).toUpperCase();					
+				ultimoNome = ultimoLetterNome+ultimoNome.substring(1).toLowerCase(); 				
+				
+				String nomeCompleto = primeiroNome+" "+ultimoNome;									
+				return nomeCompleto;																	
+			}
+
+			//----------- CAPTURANDO ANIVERSARIO/MES USUARIO --------------//
+			public static void captureDates(String nomeCompleto) {
+				Scanner input = new Scanner(System.in); 												
+				byte diaAniversario; 																		
+				String mesAniversario; 																	
+				
+				System.out.println(nomeCompleto+", em que dia nos fomos agraciados com a sua vinda a terra?");	
+				diaAniversario = input.nextByte();																	
+				
+				System.out.println(nomeCompleto+", em que mes nos fomos agraciados com a sua vinda a terra?\nSelecione o mes correspondente na lista:");
+				System.out.println("1 - Janeiro    |  2 - Fevereiro   |  3 - Marco");
+				System.out.println("4 - Abril      |  5 - Maio        |  6 - Junho");
+				System.out.println("7 - Julho      |  8 - Agosto      |  9 - Setembro");
+				System.out.println("10 - Outubro   |  11 - Novembro   |  12 - Dezembro");
+						
+				mesAniversario = input.next();
+				
+				switch(mesAniversario.toLowerCase()) {
+				case "1":
+				case "janeiro":
+					//verificacao do mes
+					validacaoTrintaUm(diaAniversario, nomeCompleto, 1);
+					break;
+				case "2","fevereiro":
+					//verificacao do mes
+					validacaoVinteeNove(diaAniversario, nomeCompleto, 2);
+					break;
+				case "3","marco":
+					//verificacao do mes
+					validacaoTrintaUm(diaAniversario, nomeCompleto, 3);
+					break;
+				case "4","abril":
+					//verificacao do mes
+					validacaoTrinta(diaAniversario, nomeCompleto, 4);
+					break;
+				case "5","maio":
+					//verificacao do mes
+					validacaoTrintaUm(diaAniversario, nomeCompleto, 5);
+					break;
+				case "6","junho":
+					//verificacao do mes
+					validacaoTrinta(diaAniversario, nomeCompleto, 6);
+					break;
+				case "7","julho":
+					//verificacao do mes
+					validacaoTrintaUm(diaAniversario, nomeCompleto, 7);
+					break;
+				case "8","agosto":
+					//verificacao do mes
+					validacaoTrintaUm(diaAniversario, nomeCompleto, 8);
+					break;
+				case "9","setembro":
+					//verificacao do mes
+					validacaoTrinta(diaAniversario, nomeCompleto, 9);
+					break;
+				case "10","outubro":
+					//verificacao do mes
+					validacaoTrintaUm(diaAniversario, nomeCompleto, 10);
+					break;
+				case "11","novembro":
+					//verificacao do mes
+					validacaoTrinta(diaAniversario, nomeCompleto, 11);
+					break;
+				case "12","dezembro":
+					//verificacao do mes
+					validacaoTrinta(diaAniversario, nomeCompleto, 12);
+					break;
+				default:
+					System.out.println("Por favor, insira um número válido para o dia do mês.");
+					datadeCaptura(nomeCompleto);
+				}
+			}
+			
+			//----------- VALIDAÇÃO PARA MESES COM 31 DIAS --------------//
+			public static void validacaoTrintaUm(byte diaAniversario, String nomeCompleto, int mesAniversario){	
+				final byte DIALIMITE=31; 																	
+				if(diaAniversario>DIALIMITE) {																	
+					System.out.println("Please, enter a valid value for the day of the month.");			
+					captureDates(nomeCompleto);																	
+				} else {																					
+					verificacaoSigno(diaAniversario,mesAniversario, nomeCompleto);   							
+				}
+			}
+						
+				
+			
+
+			//----------- VALIDAÇÃO PARA MESES COM 30 DIAS --------------//
+			public static void validacaoTrinta(byte diaAniversario, String nomeCompleto, int mesAniversario) {		
+				final byte DIALIMITE=30;																		
+				if(diaAniversario>DIALIMITE) {																	
+					System.out.println("Por favor, insira um dia válido para o mês.");			
+					datadeCaptura(nomeCompleto);																	
+				} else {																					
+					verificacaoSigno(diaAniversario, mesAniversario, nomeCompleto);   								
+				}
+			}
 		
 	
-		String signo  
-		
-		if else (mes == 3 && dia >= 21 && dia <= 31 / mes == 4 && dia <= 20) {
-			signo = "ARIES";
-		}  if (mes == 4 && dia >= 21 && dia <= 30 / mes == 5 && dia <= 20) {
-			signo = "TOURO";
-		} else if (mes == 5 && dia >= 21 && dia <= 31 / mes == 6 && dia <= 20) {
-			signo = "GEMEOS";
-		} else if (mes == 6 && dia >= 21 && dia <= 30 / mes == 7 && dia <= 22) {
-			signo = "CANCER";
-		} else if (mes == 7 && dia >= 23 && dia <= 31 / mes == 8 && dia <= 22) {
-			signo = "LEAO";
-		} else if (mes == 8 && dia >= 23 && dia <= 31 / mes == 9 && dia <= 22) {
-			signo = "VIRGE";
-		} else if (mes == 9 && dia >= 23 && dia <= 30 / mes == 10 && dia <= 22) {
-			signo = "LIBRA";
-		} else if (mes == 10 && dia >= 23 && dia <= 31 / mes == 11 && dia <= 21) {
-			signo = "ESCORPIAO";
-		} else if (mes == 11 && dia >= 22 && dia <= 30 / mes == 12 && dia <= 21) {
-			signo = "SAGITARIO";
-		} else if (mes == 12 && dia >= 22 && dia <= 31 / mes == 1 && dia <= 20) {
-			signo = "CAPRICORNIO";
-		} else if (mes == 1 && dia >= 21 && dia <= 31 / mes == 2 && dia <= 18) {
-			signo = "AQUARIO";
-		} else if (mes == 2 && dia >= 19 && dia <= 29/ mes == 3 && dia <= 20) {
-			signo = "PEIXES";
-		} else {
-			signo = "error";
-		}
+				
+			
 
-		return signo;
-	}
-}
-		
+			private static void datadeCaptura(String nomeCompleto) {
+								
+			}
+
+			//----------- VALIDAÇÃO PARA MESES COM 29 DIAS --------------//
+			public static void validacaoVinteeNove(byte diaAniversario, String nomeCompleto, int mesAniversario){	
+				final byte DIALIMITE=29;																		
+				if(diaAniversario>DIALIMITE) {																	
+					System.out.println("Por favor, insira um dia válido para o mês.");			
+					datadeCaptura(nomeCompleto);																	
+				} else {																					
+					verificacaoSigno(diaAniversario, mesAniversario, nomeCompleto);    								
+			   }
+			}
+			
+			
+			//----------- VERIFICANDO O SIGNO DO USUARIO --------------//
+			private static void verificacaoSigno(byte diaAniversario, int mesAniversario, String nomeCompleto) {
+				
+				if(diaAniversario>=21 && mesAniversario==3 || diaAniversario<=20 && mesAniversario==4) {
+					System.out.println(nomeCompleto+ " seu signo e ARIES!");
+				} else if(diaAniversario>=21 && mesAniversario==4 || diaAniversario<=20 && mesAniversario==5) {
+					System.out.println(nomeCompleto+ " seu signo e TOURO!");
+				} else if(diaAniversario>=21 && mesAniversario==5 || diaAniversario<=20 && mesAniversario==6) {
+					System.out.println(nomeCompleto+ " seu signo e GEMEOS!");
+				} else if(diaAniversario>=21 && mesAniversario==6 || diaAniversario<=22 && mesAniversario==7) {
+					System.out.println(nomeCompleto+ " seu signo e CANCER!");
+				} else if(diaAniversario>=23 && mesAniversario==7 || diaAniversario<=22 && mesAniversario==8) {
+					System.out.println(nomeCompleto+ " seu signo e LEAO!");
+				} else if(diaAniversario>=23 && mesAniversario==8 || diaAniversario<=22 && mesAniversario==9) {
+					System.out.println(nomeCompleto+ " seu signo e VIRGEM!");
+				} else if(diaAniversario>=23 && mesAniversario==9 || diaAniversario<=22 && mesAniversario==10) {
+					System.out.println(nomeCompleto+ " seu signo e LIBRA!");
+				} else if(diaAniversario>=23 && mesAniversario==10 || diaAniversario<=21 && mesAniversario==11) {
+					System.out.println(nomeCompleto+ " seu signo e ESCORPIAO!");
+				} else if(diaAniversario>=22 && mesAniversario==11 || diaAniversario<=21 && mesAniversario==12) {
+					System.out.println(nomeCompleto+ " seu signo e SAGITARIO!");
+				} else if(diaAniversario>=22 && mesAniversario==12 || diaAniversario<=20 && mesAniversario==1) {
+					System.out.println(nomeCompleto+ " seu signo e CAPRICORNIO!");
+				} else if(diaAniversario>=21 && mesAniversario==1 || diaAniversario<=18 && mesAniversario==2) {
+					System.out.println(nomeCompleto+ " seu signo e AQUARIO!");
+				} else if(diaAniversario>=19 && mesAniversario==2 || diaAniversario<=20 && mesAniversario==3) {
+					System.out.println(nomeCompleto+ " seu signo e PEIXES!");
+				} else {
+					System.out.println(nomeCompleto+"Voce se superou! Como voce chegou ate aqui?!");
+				}
+				
+			}
+			
+		}
