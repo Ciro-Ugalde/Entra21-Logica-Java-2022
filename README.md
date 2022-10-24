@@ -7,7 +7,7 @@ Repositório com as práticas realizadas em aula
 > - Linguagem markdown
 > - Documentação
 
-> <img src="./entra21.gif">
+![Gif Entra21](./entra21.gif)
 
 ## Aula Ministradas
 
